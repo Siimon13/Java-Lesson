@@ -1,0 +1,20 @@
+1.Make a function that prints out the nth fibonacci number. For example
+
+  public static int Fib(int n){
+  //returns the nth Fib number
+
+  } 
+ 
+2.Make function that prints out a random number between 1 - 1000
+
+  public static int randNum(){
+
+  }
+
+3.Write a function that takes in an array and prints out the object in the middle of the array.
+Assume the array has something in it.
+
+  public static String stuff(String[] arr){
+
+  }
+	
