@@ -34,7 +34,7 @@ public class HW1Answers{
     
     //Answer to question 3
     public static String stuff(String[] arr){
-	int mid = arr.length / 2;
+	int mid = arr.length / 2 - 1;
 	return arr[mid];
     }
 
