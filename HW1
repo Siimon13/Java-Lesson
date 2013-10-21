@@ -1,3 +1,5 @@
+//Refer to Testname.java
+
 1.Make a function that prints out the nth fibonacci number. For example
 
   public static int Fib(int n){

@@ -1,4 +1,5 @@
 /*
+ Refer to TestName.java
  A class that prints out hi world on the terminal. First java lesson. Introuduces the S.O.P command the class and the main function.
  * means a comment 
  The / * and * / puts whatever is inside as a comment.
