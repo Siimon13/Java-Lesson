@@ -1,4 +1,6 @@
-Create a function that takes in a String[] and deletes a random String from the Array and replace the missing space with the objects proceeding the removed object. It will then return the removed object If the last object is removed, no other object will be moved. 
+Create a function that takes in a String[] and deletes a random String from the Array and 
+replace the missing space with the objects proceeding the removed object. It will then return 
+the array. If the last object is removed, no other object will be moved. 
 For example:
 arr = {"hi","there","fred","pothead","gud"}
 S.O.P.(ArrRandRemove(arr)) -> pothead
