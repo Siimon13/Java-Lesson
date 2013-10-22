@@ -23,7 +23,7 @@ public class MagicSq{
       // .
       // .
        //This function prints the Array
-       public static void printArr(){
+       public  void printArr(){
        for(int i = 0; i < size;i++){
        	       for(int j = 0; j < size; j++){
 	       	       System.out.print(sq[i][j] + " ");
