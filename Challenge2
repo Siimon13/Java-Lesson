@@ -1,6 +1,6 @@
 /*
 Make a Function that forms make squares of size n. You will need to use 2D Arrays for this project. For example if you give the size as 3, the 2D array should be:
-//The r represents rows and c columns
+//The r represents rows and c columns. Numbers can not repeat.
       r r r
    c  2 7 6
    c  9 5 1 
