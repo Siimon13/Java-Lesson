@@ -14,27 +14,59 @@ size > 0;
 Make sure you have a function in case the user does not give you a size. You will need helper functions. You are free to use the format below or crearte your own:
 */
 public class MagicSq{
-       private int[][] sq;
-       private int size;
+    private int[][] sq;
+    private int size;
        
-       //Code and Helpers
-      // .
-      // .
-      // .
-      // .
-       //This function prints the Array
-       public  void printArr(){
-       for(int i = 0; i < size;i++){
-       	       for(int j = 0; j < size; j++){
-	       	       System.out.print(sq[i][j] + " ");
-       		     }
-	       System.out.println("");
-       	}
-       }
-       
-       public static void main(String[] args){
-       //Code
-       }      
+    
+    //Default Sq Constructor
+    public void MagicSquare(){
+        sq = new int[3][3];
+        size = 3;
+        
+    }
 
+    //Sq Constructor with a parameter
+    public void MagicSquare(int n){
+        sq = new int[n][n];
+        size = n;
+        
+    }
+    
+    public void MakeMagic(){
+        if(size%4 == 0){
+            //DoublyEven sq goes here
+        }
+       	//else if(size%2 == 0){ code}
+        else{
+            //Odd sq goes here
+        }
+    }
+    
+    //This function prints the Array
+    public void printArr(){
+        for(int i = 0; i < size;i++){
+            for(int j = 0; j < size; j++){
+                System.out.print(sq[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+  
+    
+    //Returns the size of the magic Square
+    public int size(){
+        return size;
+    }
+    
+    public static void main(String[] args){
+        MagicSq sq = new MagicSq();
+        sq.MagicSquare();
+        System.out.println("This is the empty sq...");
+        sq.printArr();
+        System.out.println("Watch the Magic happen...");
+        sq.MakeMagic();
+        sq.printArr();
+    }      
+    
 
 }
