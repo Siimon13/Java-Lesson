@@ -13,6 +13,7 @@
 
   Make sure you have a function in case the user does not give you a size. You will need helper functions. You are free to use the format below or crearte your own:
 */
+
 import java.io.*;
 public class MagicSq{
     private int[][] sq;
@@ -33,15 +34,215 @@ public class MagicSq{
 	
     }
     
+    //Magic Square function
     public void MakeMagic(){
-	if(size%2 == 0){
-	    //Even sq goes here
+	if(size%4 == 0){
+	    //Doubly Even sq goes here
+	    fillSq();
+	    int lim1 = size/4;
+	    int lim2 = size/2;
+	    int counter = 0;
+	    for(int i = 0; i < lim2;i++){
+		for(int j = 0; j < size; j++){
+		    if(counter < lim1){
+			if(j >= lim1 && j <= size-1-lim1)
+			    sqReverse(i,j);
+		    }
+		    else{
+			if(j < lim1 || j > size-1-lim1)
+			    sqReverse(i,j);
+		    }
+		}
+		counter++;
+	    }
+	    
+	}
+	else if(size%2 == 0){
+	    //SinglyEven sq goes here
+	    singlyStart();
+	    int lim = size / 4;
+	    int pos = 0;
+	    int back = size - 1;
+	    while( pos < lim){
+		if(pos == 0){
+		    swapSt();
+		}
+		else{
+		    swapR(pos);
+		}
+		if(pos > 0){
+		    swapR(back);
+		}
+		pos++;
+	    }
+	    int tmp = sq[pos][pos];
+	    sq[pos][pos] = sq[size - pos - 1][pos];
+	    sq[size - pos - 1][pos] = tmp;
 	}
 	else{
 	    //Odd sq goes here
+	    int rpos = size/2;
+	    int cpos = 0;
+	    int oldc = cpos;
+	    int oldr = rpos;
+	    int i = 1;
+	    while(i <= size*size){
+		if(sq[cpos][rpos] == 0){
+		    oldc = cpos;
+		    oldr = rpos;
+		    sq[cpos][rpos] = i;
+		    cpos = cOddCheck(cpos);
+		    rpos = rOddCheck(rpos);
+		}
+		else{
+		    cpos = oldc;
+		    rpos = oldr;
+		    cpos++;
+		    sq[cpos][rpos] = i;
+		    cpos = cOddCheck(cpos);
+		    rpos = rOddCheck(rpos);
+		}
+		i++;
+	    }
 	}
     }
     
+    //Helper Functions==================================================
+    
+    //Checks the coulmns in the Odd Square
+    public int cOddCheck(int cpos){
+	if(cpos == 0)
+	    cpos = size - 1;
+	else
+	    cpos--;
+	return cpos;
+    }
+
+    //Checks the rows in the Odd Square
+    public int rOddCheck(int rpos){
+	if(rpos == size - 1)
+	    rpos = 0;
+	else
+	    rpos++;
+	return rpos;
+    }
+
+    //Doubly Even Fills the Sq
+    public void fillSq(){
+	int n = 1;
+	for(int i = 0; i < size;i++){
+	    for(int j = 0; j < size; j++){
+		sq[i][j] = n;
+		n++;
+	    }
+	}
+    }
+    
+    //Doubly Even Reverses Sq
+    public void sqReverse(int col, int row){
+	int tmp = sq[col][row];
+	sq[col][row] = sq[size-1-col][size-1-row];
+	sq[size-1-col][size-1-row] = tmp;
+    }
+    
+    //Singly Even Square starts the filling of the square.
+    public void singlyStart(){
+	//Starting pos of the A sqaure 
+	int A = 0;
+	//Starting pos of the B square
+	int B = size / 2;
+	//Starting pos of the C square
+	int Cc = 0;
+	int Cr = size / 2;
+	//Starting pos of the D square
+	int Dc = size / 2;
+	int Dr = 0;
+	//Starting value of square
+	int start = 1;
+	start = singlyOdd(A,A,start);
+	start = singlyOdd(B,B,start);
+	start = singlyOdd(Cr,Cc,start);
+	start = singlyOdd(Dr,Dc,start);
+    }
+
+    //Singly Even Odd Square
+    public int singlyOdd(int startr, int startc, int start){
+	int lim = (size/2) * (size/2);
+	int rpos = startr + size/4;
+	int cpos = startc;
+	int oldc = cpos;
+	int oldr = rpos;
+	int rLim = startr + size/2 - 1;
+	int cLim = startc + size/2 - 1;
+	int i = 1;
+	while(i <= lim){
+	    if(sq[cpos][rpos] == 0){
+		oldc = cpos;
+		oldr = rpos;
+		sq[cpos][rpos] = start;
+		cpos = cOddCheck(cpos, startc, cLim);
+		rpos = rOddCheck(rpos, rLim, startr);
+	    }
+	    else{
+		cpos = oldc;
+		rpos = oldr;
+		cpos++;
+		sq[cpos][rpos] = start;
+		cpos = cOddCheck(cpos, startc,cLim);
+		rpos = rOddCheck(rpos, rLim, startr);
+	    }
+	    start++;
+	    i++;
+	}
+	return start;
+    }
+
+    //Checks the coulmns in the Odd Square
+    public int cOddCheck(int cpos, int lim, int cLim){
+	if(cpos == lim)
+	    cpos = cLim;
+	else
+	    cpos--;
+	return cpos;
+    }
+
+    //Checks the rows in the Odd Square
+    public int rOddCheck(int rpos, int lim, int startr){
+	if(rpos == lim)
+	    rpos = startr;
+	else
+	    rpos++;
+	return rpos;
+    }
+
+    //Swaps the 0 pos
+    public void swapSt(){
+	int i = 0;
+	int lim = size/2;
+	while( i < lim){
+	    if(i != size/4){
+	    int tmp = sq[i][0];
+	    sq[i][0] = sq[lim+i][0];
+	    sq[lim+i][0] = tmp;
+	    }
+	    i++;
+	}
+    }
+
+    //Swaps the entire row
+    public void swapR(int r){
+	int i = 0;
+	int lim = size/2;
+	while( i < lim){
+	    int tmp = sq[i][r];
+	    sq[i][r] = sq[lim+i][r];
+	    sq[lim+i][r] = tmp;
+	    i++;
+	}
+    }
+    
+    //End Helpers ======================================================
+
     //This function prints the Array
     public void printArr(){
 	for(int i = 0; i < size;i++){
@@ -60,8 +261,8 @@ public class MagicSq{
     
     public static void main(String[] args){
 	MagicSq sq = new MagicSq();
-	sq.MagicSquare();
-	System.out.println("This is the empty sq...");
+	sq.MagicSquare(10);
+	System.out.println("This is the empty sq of size " + sq.size() + "...");
 	sq.printArr();
 	System.out.println("Watch the Magic happen...");
 	sq.MakeMagic();
