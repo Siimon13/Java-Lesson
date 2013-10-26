@@ -23,6 +23,14 @@ public class HW1Answers{
 	return ans;
     }
     
+    
+    public int RNGC(int lim){
+	int ans = (int)(System.nanoTime() % lim + 1);
+	if(ans < 0)
+	    ans= ans * -1;
+	return ans;
+    }
+    
     //Generating a random number
     public static int randNum(int x){
 	System.out.println("Using RNG..");
