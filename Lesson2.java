@@ -8,6 +8,7 @@ public class Lesson2{
       O(logn) log of n
       To calculate the run time of a something we take into account how long on average it will take a function to find the answer to the problem. For example if we are given {1, 2, 3, 4} and asked to find 3. We can loop through the array and the runtime will be n. When taking into account runtime we ignore the constants, i.e. the true run time will be 3, because it only checks through 3 ints. However this function runtime is n, because we do not take into account the constant.
       Below are code for Binary Search, ArraLists, and usage of classes to build your program
+      Fork
      */
     
     public static void arrayListDemo(){
