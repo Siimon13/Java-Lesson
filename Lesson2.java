@@ -45,12 +45,26 @@ public class Lesson2{
     }
 
     //Binary Search 
-    public static void BS(ArrayList<Integer> l){
-	System.out.println(l);
-	Collections.sort(l);
-	System.out.println(l);
-    }
+    public static void BS(int[] data,x{
+    int size;1
+         int low = 0;
+         int high = size - 1;
+          
+         while(high >= low) {
+             int middle = (low + high) / 2;
+             if(data[middle] == key) {
+                 return true;
+             }
+             if(data[middle] < key) {
+                 low = middle + 1;
+             }
+            if(data[middle] > key) {
+                 high = middle - 1;
+             }
+        }
+        return false;
+   }
+}	
     
     
 
-}
