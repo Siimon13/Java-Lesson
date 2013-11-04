@@ -1,0 +1,1 @@
+Make a class called wordFinder that when given a 2d array of words and a array of words to find, the class will place X's over the words that it finds in the 2d array. Assume that the 2d array will have all the words.
